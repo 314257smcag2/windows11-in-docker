@@ -1,0 +1,15 @@
+services:
+  windows11:
+    build: .
+    shm_size: 120GB
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+    network_mode: "host"
+    volumes:
+      - /mnt/wslg/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+      - windows11-in-docker_data:/home
+volumes:
+  windows11-in-docker_data:
+    name: windows11-in-docker_data
