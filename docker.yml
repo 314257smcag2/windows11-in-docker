@@ -1,6 +1,6 @@
+version: "3.9"  # optional since v1.27.0
 services:
-  vpsmg0:
+  web:
     build: .
-    shm_size: 120gb
     ports:
-      - "80:80"
+      - "8080:6080"
