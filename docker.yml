@@ -1,6 +1,18 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.9"
+
 services:
-  web:
-    build: .
+  libvirt:
+    restart: always
+    image: msjpq/windows-in-docker:latest
+    security_opt:
+      - apparmor=unconfined
+    environment:
+      TZ:
+      # Make sure DATA_DIR is the same across the three `${DATA_DIR}`s
+      # The windows drivers are also downloaded under here.
+      DATA_DIR: "${DATA_DIR}"
     ports:
-      - "8080:65080"
+      - 80:8080
+    volumes:
+      - /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock:ro
+      - "${DATA_DIR}:${DATA_DIR}"
