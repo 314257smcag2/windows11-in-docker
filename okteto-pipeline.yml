@@ -1,4 +1,4 @@
 deploy:
-  - okteto stack deploy --build -f docker-compose.yml
+  - okteto stack deploy --build -f swtpm-in-docker/docker.yml
 devs:
-  - docker-compose.yml
+  - swtpm-in-docker/docker.yml
